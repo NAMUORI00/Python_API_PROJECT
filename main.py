@@ -1,21 +1,11 @@
-import requests
-from urllib.parse import urlencode, unquote
-from xml.etree import ElementTree
-
-
-# xml 리턴
-def asdf():
-    apikey = unquote("AU%2B3Jd9M%2F4EFoqDe43gUAyFC9QwBPwKS0grAx3kbZCqeAlO9yeNzqYh0OZT0gKYtAwVeJVkihmP8MyopkaQPfg%3D%3D")
-    paramdata = {"authApiKey": apikey}
-    resp = requests.get('http://openapi.jejuits.go.kr/rfcapi/rest/jejuits/getTrafficInfo', params=paramdata)
-    tree = ElementTree.fromstring(resp.content)
-    print(resp.content)
-    return tree
-
+import DBFtoDF
+import API_REQUEST
 
 if __name__ == '__main__':
-    tree = asdf()
-    for child in tree.iter('LINK_ID'):
+    xml_tree = API_REQUEST.api_request()  # XML 반환 데이터를 tree에 담기
+    dbf_table = DBFtoDF.DBF_2_DF('MOCT_LINK.dbf')  # DBF 파일을 테이블 형식으로 변환
+
+    for child in xml_tree.iter('LINK_ID'):
         print(child.text)
-    for child in tree.iter('OCPY_RATE'):
+    for child in xml_tree.iter('OCPY_RATE'):
         print(child.text)
