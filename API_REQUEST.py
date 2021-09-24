@@ -9,5 +9,4 @@ def api_request():
     paramdata = {"authApiKey": apikey}
     resp = requests.get('http://openapi.jejuits.go.kr/rfcapi/rest/jejuits/getTrafficInfo', params=paramdata)
     tree = ElementTree.fromstring(resp.content)
-    print(resp.content)
     return tree
