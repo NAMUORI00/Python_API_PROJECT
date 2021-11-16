@@ -25,9 +25,10 @@ def xmldumpopen(file_path):
     file.close()
     return temp_list
 
-#xml_list의 LINK_ID중 최소값과 최대값을 찾습니다
+
+# xml_list의 LINK_ID중 최소값과 최대값을 찾습니다
 def minmaxlinkid(xml_list):
-    minmax = [int(xml_list[0]['LINKID']),0]
+    minmax = [int(xml_list[0]['LINKID']), 0]
     for count in range(len(xml_list)):
         minmax[0] = int(xml_list[count]['LINKID']) if minmax[0] > int(xml_list[count]['LINKID']) else minmax[0]
         minmax[1] = int(xml_list[count]['LINKID']) if minmax[1] < int(xml_list[count]['LINKID']) else minmax[1]

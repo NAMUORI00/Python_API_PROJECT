@@ -1,7 +1,5 @@
-import pickle
-
-def make_data_list(list1, list2):
+# list, key
+def filter_dbfdata_list(list_e, key):
     temp_list = list()
-    #for i in range(0, len(list2)):
-        
-    return 1
+
+    return temp_list
