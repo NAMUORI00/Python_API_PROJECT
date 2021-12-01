@@ -6,6 +6,7 @@ import xml_func
 def makexmllist():
     # API 지원중단이 되어서 기존에 다운로드한 dump 파일을 기준으로 프로젝트를 진행합니다.
     # xml response 데이터 호출.
+    xml_func.xmllistdump('dump_file/xml_tree_nodlink.txt')  # xml 트리에서 유효한 LINK_ID 만 리스트로 모아서 덤프파일 생성
     xml_list = xml_func.xmldumpopen('dump_file/xml_tree_nodlink.txt')
     return xml_list
 
@@ -23,6 +24,8 @@ def makeDBFlist(xml_list):
 
 if __name__ == '__main__':
     xml_list = makexmllist()   # xml 딕셔너리 리스트 변수
+    print(xml_list)
+    print('==================================================')
     dbf_list = makeDBFlist(xml_list)   # dbf 딕셔너리 리스트 변수
     print(dbf_list)
 
